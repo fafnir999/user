@@ -1,5 +1,5 @@
 {
-    "name": "msgphp/user",
+    "name": "fafnir999/user",
     "type": "library",
     "description": "A domain layer providing basic user management",
     "keywords": [
