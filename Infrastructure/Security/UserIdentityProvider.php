@@ -43,6 +43,17 @@ final class UserIdentityProvider implements UserProviderInterface
         return $this->fromUser($user, $username);
     }
 
+    public function loadUserByIdentifier($username): UserInterface
+    {
+        try {
+            $user = $this->repository->findByUsername($username);
+        } catch (EntityNotFound $e) {
+            throw new UsernameNotFoundException($e->getMessage());
+        }
+
+        return $this->fromUser($user, $username);
+    }
+
     /**
      * @return UserIdentity
      */

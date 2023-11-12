@@ -17,7 +17,7 @@
         }
     ],
     "require": {
-        "fafnir999/domain": "0.15.1.2"
+        "fafnir999/domain": "0.15.1.5"
     },
     "require-dev": {
         "doctrine/orm": "^2.6",
