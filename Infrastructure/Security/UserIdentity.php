@@ -7,14 +7,13 @@ namespace MsgPhp\User\Infrastructure\Security;
 use MsgPhp\User\Credential\PasswordProtectedCredential;
 use MsgPhp\User\User;
 use MsgPhp\User\UserId;
-use Symfony\Component\Security\Core\Encoder\EncoderAwareInterface;
-use Symfony\Component\Security\Core\User\EquatableInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 /**
  * @author Roland Franssen <franssen.roland@gmail.com>
  */
-final class UserIdentity implements UserInterface, EquatableInterface, EncoderAwareInterface
+final class UserIdentity implements UserInterface, PasswordAuthenticatedUserInterface
 {
     /** @var UserId */
     private $id;
@@ -54,6 +53,11 @@ final class UserIdentity implements UserInterface, EquatableInterface, EncoderAw
         return $this->id;
     }
 
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->originUsername;
+    }
+
     public function getOriginUsername(): ?string
     {
         return $this->originUsername;
@@ -84,16 +88,6 @@ final class UserIdentity implements UserInterface, EquatableInterface, EncoderAw
 
     public function eraseCredentials(): void
     {
-        $this->password = null;
-    }
-
-    public function isEqualTo(UserInterface $user): bool
-    {
-        return $user instanceof self && $user->getUserId()->equals($this->id);
-    }
-
-    public function getEncoderName(): string
-    {
-        return $this->hashing;
+//        $this->password = null;
     }
 }
