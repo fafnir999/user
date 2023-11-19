@@ -12,7 +12,8 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
+use Symfony\Component\PasswordHasher\Hasher\PasswordHasherFactoryInterface;
+use Symfony\Component\PasswordHasher\PasswordHasherInterface;
 use Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Constraints\Callback;
@@ -25,14 +26,14 @@ final class HashedPasswordType extends AbstractType
 {
     private $hashingFactory;
 
-    public function __construct(EncoderFactoryInterface $hashingFactory)
+    public function __construct(PasswordHasherFactoryInterface $hashingFactory)
     {
         $this->hashingFactory = $hashingFactory;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $password = new Password($this->hashingFactory->getEncoder($options['hashing']));
+        $password = new Password($this->hashingFactory->getPasswordHasher($options['hashing']));
         $fieldOptions = [
             'required' => $options['required'],
             'translation_domain' => $options['translation_domain'],
@@ -62,7 +63,7 @@ final class HashedPasswordType extends AbstractType
                     throw new TransformationFailedException();
                 }
 
-                $password->hash = $password->hashing->encodePassword($value['plain'], null);
+                $password->hash = $password->hashing->hash($value['plain']);
 
                 if (\function_exists('sodium_memzero')) {
                     sodium_memzero($value['plain']);
@@ -86,7 +87,7 @@ final class HashedPasswordType extends AbstractType
 
                 $valid = false;
                 if (\is_string($value)) {
-                    $valid = null === $password->hash ? false : $password->hashing->isPasswordValid($password->hash, $value, null);
+                    $valid = null === $password->hash ? false : $password->hashing->verify($password->hash, $value);
                     if (\function_exists('sodium_memzero')) {
                         sodium_memzero($value);
                     }
@@ -146,7 +147,7 @@ final class Password
     /** @var null|string */
     public $hash;
 
-    public function __construct(PasswordEncoderInterface $hashing)
+    public function __construct(PasswordHasherInterface $hashing)
     {
         $this->hashing = $hashing;
     }

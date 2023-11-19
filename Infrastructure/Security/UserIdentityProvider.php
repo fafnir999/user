@@ -9,9 +9,9 @@ use MsgPhp\User\Repository\UserRepository;
 use MsgPhp\User\Role\RoleProvider;
 use MsgPhp\User\User;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
-use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
+use Symfony\Component\Security\Core\Exception\UserNotFoundException;
 
 /**
  * @author Roland Franssen <franssen.roland@gmail.com>
@@ -37,7 +37,7 @@ final class UserIdentityProvider implements UserProviderInterface
         try {
             $user = $this->repository->findByUsername($username);
         } catch (EntityNotFound $e) {
-            throw new UsernameNotFoundException($e->getMessage());
+            throw new UserNotFoundException($e->getMessage());
         }
 
         return $this->fromUser($user, $username);
@@ -48,7 +48,7 @@ final class UserIdentityProvider implements UserProviderInterface
         try {
             $user = $this->repository->findByUsername($username);
         } catch (EntityNotFound $e) {
-            throw new UsernameNotFoundException($e->getMessage());
+            throw new UserNotFoundException($e->getMessage());
         }
 
         return $this->fromUser($user, $username);
@@ -68,7 +68,7 @@ final class UserIdentityProvider implements UserProviderInterface
         try {
             $user = $this->repository->find($identity->getUserId());
         } catch (EntityNotFound $e) {
-            throw new UsernameNotFoundException($e->getMessage());
+            throw new UserNotFoundException($e->getMessage());
         }
 
         return $this->fromUser($user, $identity->getOriginUsername());
