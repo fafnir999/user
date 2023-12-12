@@ -9,19 +9,16 @@ use MsgPhp\Domain\Factory\DomainObjectFactory;
 use MsgPhp\Domain\Infrastructure\Console\Definition\DomainContextDefinition;
 use MsgPhp\User\Command\ChangeUserCredential;
 use MsgPhp\User\Infrastructure\Console\Definition\UserDefinition;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-/**
- * @author Roland Franssen <franssen.roland@gmail.com>
- */
+#[AsCommand(name: 'user:change-credential')]
 final class ChangeUserCredentialCommand extends Command
 {
-    protected static $defaultName = 'user:change-credential';
-
     /** @var DomainObjectFactory */
     private $factory;
     /** @var DomainMessageBus */

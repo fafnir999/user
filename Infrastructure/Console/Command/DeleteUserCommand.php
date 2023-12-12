@@ -8,18 +8,15 @@ use MsgPhp\Domain\DomainMessageBus;
 use MsgPhp\Domain\Factory\DomainObjectFactory;
 use MsgPhp\User\Command\DeleteUser;
 use MsgPhp\User\Infrastructure\Console\Definition\UserDefinition;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-/**
- * @author Roland Franssen <franssen.roland@gmail.com>
- */
+#[AsCommand(name: 'user:delete')]
 final class DeleteUserCommand extends Command
 {
-    protected static $defaultName = 'user:delete';
-
     /** @var DomainObjectFactory */
     private $factory;
     /** @var DomainMessageBus */
