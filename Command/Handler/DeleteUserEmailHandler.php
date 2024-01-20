@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace MsgPhp\User\Command\Handler;
 
+use Fafnir999\CoreBundle\Domain\Contract\Infrastructure\DomainEventBusInterface;
 use MsgPhp\Domain\DomainMessageBus;
 use MsgPhp\Domain\Exception\EntityNotFound;
 use MsgPhp\Domain\Factory\DomainObjectFactory;
@@ -20,7 +21,7 @@ final class DeleteUserEmailHandler
     private $bus;
     private $repository;
 
-    public function __construct(DomainObjectFactory $factory, DomainMessageBus $bus, UserEmailRepository $repository)
+    public function __construct(DomainObjectFactory $factory, DomainEventBusInterface $bus, UserEmailRepository $repository)
     {
         $this->factory = $factory;
         $this->bus = $bus;

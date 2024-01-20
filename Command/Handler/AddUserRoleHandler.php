@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace MsgPhp\User\Command\Handler;
 
+use Fafnir999\CoreBundle\Domain\Contract\Infrastructure\DomainEventBusInterface;
 use MsgPhp\Domain\DomainMessageBus;
 use MsgPhp\Domain\Factory\DomainObjectFactory;
 use MsgPhp\User\Command\AddUserRole;
@@ -22,7 +23,7 @@ final class AddUserRoleHandler
     private $bus;
     private $repository;
 
-    public function __construct(DomainObjectFactory $factory, DomainMessageBus $bus, UserRoleRepository $repository)
+    public function __construct(DomainObjectFactory $factory, DomainEventBusInterface $bus, UserRoleRepository $repository)
     {
         $this->factory = $factory;
         $this->bus = $bus;

@@ -10,7 +10,7 @@ namespace MsgPhp\User\Credential;
 trait PasswordProtection
 {
     /** @var string */
-    private $password;
+    protected $password;
 
     public static function getPasswordField(): string
     {

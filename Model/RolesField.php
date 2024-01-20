@@ -14,7 +14,7 @@ use MsgPhp\User\UserRole;
 trait RolesField
 {
     /** @var iterable<array-key, UserRole> */
-    private $roles = [];
+    protected $roles = [];
 
     /**
      * @return DomainCollection<array-key, UserRole>

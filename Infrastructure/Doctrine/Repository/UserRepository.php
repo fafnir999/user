@@ -35,7 +35,7 @@ final class UserRepository implements BaseUserRepository
     {
         $this->class = $class;
         $this->em = $em;
-        $this->usernameField = $usernameField;
+        $this->usernameField = 'credential.email';
         $this->usernameRepository = $usernameRepository;
     }
 
@@ -51,9 +51,9 @@ final class UserRepository implements BaseUserRepository
 
     public function findByUsername(string $username): User
     {
-        if (null !== $this->usernameRepository) {
-            return $this->usernameRepository->find($username)->getUser();
-        }
+//        if (null !== $this->usernameRepository) {
+//            return $this->usernameRepository->find($username)->getUser();
+//        }
 
         if (null === $this->usernameField) {
             throw new \LogicException('User has no username field.');
@@ -69,9 +69,9 @@ final class UserRepository implements BaseUserRepository
 
     public function usernameExists(string $username): bool
     {
-        if (null !== $this->usernameRepository) {
-            return $this->usernameRepository->exists($username);
-        }
+//        if (null !== $this->usernameRepository) {
+//            return $this->usernameRepository->exists($username);
+//        }
 
         if (null === $this->usernameField) {
             throw new \LogicException('User has no username field.');

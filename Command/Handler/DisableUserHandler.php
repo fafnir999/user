@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace MsgPhp\User\Command\Handler;
 
+use Fafnir999\CoreBundle\Domain\Contract\Infrastructure\DomainEventBusInterface;
 use MsgPhp\Domain\DomainMessageBus;
 use MsgPhp\Domain\Event\Disable;
 use MsgPhp\Domain\Event\EventSourcingCommandHandlerTrait;
@@ -23,7 +24,7 @@ final class DisableUserHandler
     private $bus;
     private $repository;
 
-    public function __construct(DomainObjectFactory $factory, DomainMessageBus $bus, UserRepository $repository)
+    public function __construct(DomainObjectFactory $factory, DomainEventBusInterface $bus, UserRepository $repository)
     {
         $this->factory = $factory;
         $this->bus = $bus;

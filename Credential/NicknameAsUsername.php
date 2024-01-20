@@ -10,7 +10,7 @@ namespace MsgPhp\User\Credential;
 trait NicknameAsUsername
 {
     /** @var string */
-    private $nickname;
+    protected $nickname;
 
     public static function getUsernameField(): string
     {

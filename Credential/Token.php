@@ -11,7 +11,7 @@ use MsgPhp\User\Event\Domain\ChangeCredential;
  */
 final class Token implements UsernameCredential
 {
-    private $token;
+    protected $token;
 
     public function __construct(string $token)
     {

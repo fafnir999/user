@@ -14,7 +14,7 @@ trait NicknamePasswordCredential
     use NicknameCredential;
 
     /** @var NicknamePassword */
-    private $credential;
+    protected $credential;
 
     public function getPassword(): string
     {

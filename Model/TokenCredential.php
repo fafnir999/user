@@ -14,7 +14,7 @@ trait TokenCredential
     use AbstractCredential;
 
     /** @var Token */
-    private $credential;
+    protected $credential;
 
     public function getToken(): string
     {

@@ -14,7 +14,7 @@ use MsgPhp\User\UserEmail;
 trait EmailsField
 {
     /** @var iterable<array-key, UserEmail> */
-    private $emails = [];
+    protected $emails = [];
 
     /**
      * @return DomainCollection<array-key, UserEmail>

@@ -14,7 +14,7 @@ trait EmailCredential
     use AbstractCredential;
 
     /** @var Email */
-    private $credential;
+    protected $credential;
 
     public function getEmail(): string
     {
