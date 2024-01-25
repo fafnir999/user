@@ -6,7 +6,7 @@ namespace MsgPhp\User\Tests\Infrastructure\Security;
 
 use MsgPhp\Domain\Exception\EntityNotFound;
 use MsgPhp\User\Credential\Credential;
-use MsgPhp\User\Infrastructure\Security\UserIdentity;
+use Fafnir999\UserBundle\Infrastructure\Security\UserIdentity;
 use MsgPhp\User\Infrastructure\Security\UserIdentityProvider;
 use MsgPhp\User\Repository\UserRepository;
 use MsgPhp\User\Role\RoleProvider;

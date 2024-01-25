@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace MsgPhp\User\Infrastructure\Form\Type;
 
-use MsgPhp\User\Infrastructure\Security\UserIdentity;
+use Fafnir999\UserBundle\Infrastructure\Security\UserIdentity;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Exception\TransformationFailedException;

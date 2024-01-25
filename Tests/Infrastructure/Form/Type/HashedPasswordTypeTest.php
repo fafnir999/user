@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace MsgPhp\User\Tests\Infrastructure\Form\Type;
 
 use MsgPhp\User\Infrastructure\Form\Type\HashedPasswordType;
-use MsgPhp\User\Infrastructure\Security\UserIdentity;
+use Fafnir999\UserBundle\Infrastructure\Security\UserIdentity;
 use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\PreloadedExtension;

@@ -7,7 +7,7 @@ namespace MsgPhp\User\Infrastructure\Security\Jwt;
 use Lexik\Bundle\JWTAuthenticationBundle\Security\User\PayloadAwareUserProviderInterface;
 use MsgPhp\Domain\Exception\EntityNotFound;
 use MsgPhp\Domain\Factory\DomainObjectFactory;
-use MsgPhp\User\Infrastructure\Security\UserIdentity;
+use Fafnir999\UserBundle\Infrastructure\Security\UserIdentity;
 use MsgPhp\User\Infrastructure\Security\UserIdentityProvider as BaseUserIdentityProvider;
 use MsgPhp\User\Repository\UserRepository;
 use MsgPhp\User\UserId;

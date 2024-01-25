@@ -6,7 +6,7 @@ namespace MsgPhp\User\Tests\Infrastructure\Security;
 
 use MsgPhp\User\Credential\Credential;
 use MsgPhp\User\Credential\PasswordProtectedCredential;
-use MsgPhp\User\Infrastructure\Security\UserIdentity;
+use Fafnir999\UserBundle\Infrastructure\Security\UserIdentity;
 use MsgPhp\User\ScalarUserId;
 use MsgPhp\User\User;
 use PHPUnit\Framework\TestCase;
